@@ -3,11 +3,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);;
+  background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  ;
 }
 
 
-.left{ 
+.left {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,12 +17,94 @@
   color: white;
 }
 
-.left img{ 
+.left img {
   width: 10%;
   border-radius: 100%;
 }
 
-.add_post{ 
+.add_post {
   width: 750px;
 
+}
+
+.post_con {
+  width: 800px;
+}
+
+.post_card {
+  width: 800px;
+}
+
+
+.post_user {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  margin: 10px;
+}
+
+.post_user img {
+  width: 6%;
+  border-radius: 100%;
+}
+
+.post_detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.post_detail_img img {
+  border-radius: 5%;
+  max-width: 450px;
+  height: 200px;
+}
+
+.post_detail_user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.post_detail_user img {
+  width: 20%;
+  border-radius: 100%;
+}
+
+.comments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comments input {
+  width: 600px;
+}
+
+.comment_user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 10px;
+}
+
+.comment_user img {
+  width: 4%;
+  border-radius: 100%;
+}
+
+.comment_con {
+  background-color: #f8f9f5;
+  color: black;
+  width: 50%;
+  border-radius: 50%;
+}
+
+.profile_user img{ 
+  border-radius: 100%;
 }
