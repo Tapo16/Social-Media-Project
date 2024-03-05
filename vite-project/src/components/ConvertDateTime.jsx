@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ConvertDateTime = ({ seconds, nanoseconds }) => {
+const ConvertDateTime = ({ seconds, nanoseconds, text }) => {
 	const time = seconds * 1000 + nanoseconds / 1e6;
 	const date = new Date(time)
 
@@ -17,7 +17,7 @@ const ConvertDateTime = ({ seconds, nanoseconds }) => {
 		timeZoneName: "short"
 	})
 	return (
-		<><h6>{formatedDate}</h6></>
+		<><h6>{text}{" "}{formatedDate}</h6></>
 	)
 }
 

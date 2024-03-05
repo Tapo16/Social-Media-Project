@@ -3,11 +3,13 @@ import { collection, addDoc, query, onSnapshot, orderBy } from 'firebase/firesto
 import { db } from '../firebase.config'
 import { getAuth } from 'firebase/auth'
 import ShowComments from './ShowComments'
+import Loader from './Loader'
 
 
 
 const Comments = ({ postId }) => {
 	const auth = getAuth();
+	const [loading, setLoading] = useState(true)
 	const [comments, setComments] = useState([])
 	const [newComment, setNewComment] = useState(" ")
 
@@ -20,9 +22,11 @@ const Comments = ({ postId }) => {
 					snapshot.docs.map((doc) => ({
 						...doc.data(),
 						id: doc.id
-					})))
-			})
-		}
+					}))
+				);
+				setLoading(false)
+			});
+		};
 		fetchData();
 		console.log("Fetching Comments", comments)
 	}, []);
@@ -55,16 +59,20 @@ const Comments = ({ postId }) => {
 						<input
 							value={newComment}
 							onChange={(e) => setNewComment(e.target.value)}
-							type="text" className="form-control mx-3" 
-							id="exampleInputEmail1" 
-							aria-describedby="emailHelp" 
+							type="text" className="form-control mx-3"
+							id="exampleInputEmail1"
+							aria-describedby="emailHelp"
 							// placeholder='Add a comment...' 
-							required/>
+							required />
 						<button type="submit" className="btn btn-primary">Add Comment</button>
 					</div>
 				</form>
 				<h3>Total Comments :- {filteredComment.length}</h3>
-				{filteredComment.map((comment) => (<ShowComments key={comment.userId} comment={comment} />))}
+				{loading ? <Loader/> : (
+					<>
+						{filteredComment.map((comment) => (<ShowComments key={comment.userId} comment={comment} />))}
+					</>
+				)}
 			</div>
 
 		</>

@@ -2,8 +2,11 @@ import React from 'react'
 import { signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth'
 import { db } from '../firebase.config'
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore'
-import {Link, useNavigate} from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { FcGoogle } from "react-icons/fc";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce } from 'react-toastify';
 
 
 const Navbar = () => {
@@ -29,20 +32,56 @@ const Navbar = () => {
         timestamp: serverTimestamp()
       })
     }
-
-    navigate('/profile')
+    toast.success(`Welcome ${auth.currentUser.displayName}`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+    navigate('/profile');
   };
 
   // console.log(auth)
 
 
-  const logOut = async () => { 
-    await auth.signOut() 
+  const logOut = async () => {
+    await auth.signOut();
+    toast.success("LogOut successfully", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
     navigate('/')
-   };
+  };
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
+
+
       <div className="nav_bar sticky-top">
         <Link to={'/'} className="left">
           {auth.currentUser ? (
@@ -55,13 +94,13 @@ const Navbar = () => {
           )}
         </Link>
         <div className="right">
-        <button onClick={googleClick} className='btn btn-warning mx-3'>Login With Google</button>
-          <Link to={"/post"} className='btn btn-warning mx-3'>Post</Link>
-          <Link to={"/profile"} className='btn btn-warning mx-3'>Profile</Link>
+          {!auth.currentUser && (<button onClick={googleClick} className='btn text-success btn-light mx-3'> <h6><FcGoogle />Login With Google</h6></button>)}
+          {auth.currentUser && (<Link to={"/post"} className='btn btn-warning mx-3'>Post</Link>)}
+          {auth.currentUser && (<Link to={"/profile"} className='btn btn-warning mx-3'>Profile</Link>)}
           <Link to={"/users"} className='btn btn-warning mx-3'>All Users</Link>
-          <button onClick={logOut} className='btn btn-warning mx-3'>LogOut</button>
+          {auth.currentUser && (<button onClick={logOut} className='btn btn-warning mx-3'>LogOut</button>)}
         </div>
-      </div> 
+      </div>
 
 
     </>

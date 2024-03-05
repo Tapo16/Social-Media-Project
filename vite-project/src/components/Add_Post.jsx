@@ -4,7 +4,9 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db, storage } from "../firebase.config";
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce } from 'react-toastify';
 
 const Add_Post = () => {
 
@@ -47,6 +49,17 @@ const Add_Post = () => {
         const saveData = await addDoc(collection(db, "post"), data);
         setDescription("")
         setTitle("");
+        toast.success("Post Added successfully", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
         navigate('/')
       } catch (error) {
         console.error("Error uploading..", error.message)
@@ -55,12 +68,24 @@ const Add_Post = () => {
       alert("Login First")
     }
 
-
-
-
   }
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
+
+
       <div className="container add_post my-5">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">

@@ -24,8 +24,8 @@
 
 .add_post {
   width: 750px;
-
 }
+
 
 .post_con {
   width: 800px;
@@ -105,6 +105,55 @@
   border-radius: 50%;
 }
 
-.profile_user img{ 
+.profile_user img {
   border-radius: 100%;
+}
+
+.all_users {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.all_users img {
+  width: 5%;
+  border-radius: 100%;
+}
+
+.all_users_con {
+  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  color: black;
+  padding: 10px;
+  border-radius: 2%;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav_bar {
+    flex-direction: column;
+  }
+
+  .post_con {
+    width: 400px;
+  }
+
+  .post_card {
+    width: 400px;
+  }
+
+  .all_users {
+    flex-direction: column;
+  }
+
+  .add_post {
+    width: 400px;
+  }
+
+  .comments input {
+    width: 300px;
+  }
+  .post_detail{ 
+      flex-direction: column;
+  }
+
 }
