@@ -94,7 +94,7 @@ const Navbar = () => {
           )}
         </Link>
         <div className="right">
-          {!auth.currentUser && (<button onClick={googleClick} className='btn text-success btn-light mx-3'> <h6><FcGoogle />Login With Google</h6></button>)}
+          {!auth.currentUser && (<button onClick={googleClick} className='btn text-success btn-light mx-3'><h3><FcGoogle/>Login With Google </h3></button>)}
           {auth.currentUser && (<Link to={"/post"} className='btn btn-warning mx-3'>Post</Link>)}
           {auth.currentUser && (<Link to={"/profile"} className='btn btn-warning mx-3'>Profile</Link>)}
           <Link to={"/users"} className='btn btn-warning mx-3'>All Users</Link>

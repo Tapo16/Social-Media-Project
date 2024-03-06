@@ -37,7 +37,7 @@ const Post = ({ data }) => {
 								<p className="card-text">
 									<ConverDateTime seconds={data.time.seconds} nanoseconds={data.time.nanoseconds} />
 								</p>
-								<Link to={`/post/${data.id}`} className='btn btn-info mx-3'><h6><FaComment style={{color:'white'}}/> {" "}Comments</h6></Link>
+								<Link to={`/post/${data.id}`} className='btn btn-info mx-3'><h6><FaComment style={{color:"white"}}/>{" "}Comments</h6></Link>
 								<Link to={`/post/${data.id}`} className='btn btn-warning mx-3'><h6>View More</h6></Link>
 
 								{location.pathname == '/profile' && (
