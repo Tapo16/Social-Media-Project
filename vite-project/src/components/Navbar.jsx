@@ -3,7 +3,7 @@ import { signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth'
 import { db } from '../firebase.config'
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore'
 import { Link, useNavigate } from 'react-router-dom';
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
@@ -94,7 +94,7 @@ const Navbar = () => {
           )}
         </Link>
         <div className="right">
-          {!auth.currentUser && (<button onClick={googleClick} className='btn text-success btn-light mx-3'><h3><FcGoogle/>Login With Google </h3></button>)}
+          {!auth.currentUser && (<button onClick={googleClick} className='btn text-success btn-light mx-3'><h3>Login With Google </h3></button>)}
           {auth.currentUser && (<Link to={"/post"} className='btn btn-warning mx-3'>Post</Link>)}
           {auth.currentUser && (<Link to={"/profile"} className='btn btn-warning mx-3'>Profile</Link>)}
           <Link to={"/users"} className='btn btn-warning mx-3'>All Users</Link>
